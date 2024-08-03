@@ -1,0 +1,44 @@
+random(min, max) 
+  return floor(math(0, 'random') * max + min)
+
+
+randomColorChannel() 
+  return random(0, 255)
+
+
+randomColor() 
+  return rgb(randomColorChannel(), randomColorChannel(), randomColorChannel())
+
+fullCover()
+  position: absolute
+  top: 0
+  left: 0
+  right: 0
+  bottom: 0
+
+$hoverBackground = rgba(21, 21, 21, 1)
+$clickedBackground = rgba(31, 31, 31, 1)
+$hoverBorderColor = rgb(164, 164, 164)
+
+buttonBackgroundEffect(clr)
+  background: clr
+  cursor: pointer
+buttonBorderEffect(clr)
+  border-color: clr
+  cursor: pointer
+baseHoverBorder()
+  &:hover
+    buttonBorderEffect($hoverBorderColor)
+baseHoverActive()
+  &:hover
+    buttonBackgroundEffect($hoverBackground)
+  &:active
+    buttonBackgroundEffect($clickedBackground)
+
+hoverActive(hoverColor, activeColor)
+  &:hover
+    buttonBackgroundEffect(hoverColor)
+    border-radius: 8px
+  &:active
+    buttonBackgroundEffect(activeColor)
+    border-radius: 8px

@@ -1,0 +1,12 @@
+forDesktop()
+  @media screen and (min-width: 75em)
+    {block}
+
+forTablet()
+  @media screen and (min-width: 75em)
+    {block}
+
+narrowerthan(var)
+  condition = 'screen and (max-width: %s)' % var
+  @media condition
+    {block}

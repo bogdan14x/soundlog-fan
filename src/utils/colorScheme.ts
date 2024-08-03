@@ -1,0 +1,31 @@
+const COLORS: Record<string, string> = {
+	offWhite: "#F9F9F9",
+	offBlack: "#101010",
+	accent: "#5C4CE8",
+	accentLight: "#CA8BE8",
+	accentInBetween: '#171623',
+	accentDark: "#080715",
+	scrubber: "#F36363",
+	accentPurple: "#594DDF",
+	subtitle: "rgba(255, 255, 255, 0.4)",
+	socialIconLabel: "#A6A6A6",
+	listItemSubtitle: "rgba(255, 255, 255, 0.6)",
+	clickableStroke: "#212121",
+	clickableStrokeHover: "#757575",
+	clickableBackground: "#1A1A1A",
+	globalStroke: "#1A1A1A",
+	placeholder: "rgba(255, 255, 255, 0.3)",
+	inputStroke: "#353535",
+	eventSeparator: "#CA4E48",
+	location: "#B0B0B0",
+	borderHover: "rgba(255, 255, 255, 0.3)",
+	albumArtist: "#737373",
+	error: "#EB2C88",
+	success: "#5CEA94",
+	warning: "#FFB74B",
+	darkGray: "#202020",
+	buttonTileBackground: '#131313',
+	buttonTileStroke: '#242424'
+};
+
+export default COLORS;

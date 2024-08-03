@@ -1,0 +1,113 @@
+no-text-selection()
+    -webkit-touch-callout: none
+    -webkit-user-select: none
+    -khtml-user-select: none
+    -moz-user-select: none
+    -ms-user-select: none
+    user-select: none
+
+flex-direction(dir)
+    flex-direction: dir
+    -ms-flex-direction: dir
+// Browser Prefixes
+transform(transforms)
+    -webkit-transform: transforms
+    -moz-transform: transforms
+    -ms-transform: transforms
+    transform: transforms
+
+rotateDeg(deg)
+    transform(rotate($deg deg))
+
+translateXY(x, y)
+    transform(translate(x, y))
+
+transform-origin(origin)
+    -webkit-transform-origin: origin
+    -moz-transform-origin: origin
+    -ms-transform-origin: origin
+    transform-origin: origin
+
+animation(animation, duration, timingFn = linear, delay, iterations = infinite, direction = forward, fillmode = fowards)
+    -webkit-animation-delay: delay
+    -webkit-animation-duration: duration
+    -webkit-animation-name: animation
+    -webkit-animation-fill-mode: fillmode
+    -webkit-animation-direction: direction
+    -webkit-transition-timing-function: timingFn
+
+    -moz-animation-delay: delay
+    -moz-animation-duration: duration
+    -moz-animation-name: animation
+    -moz-animation-fill-mode: fillmode
+    -moz-animation-direction: direction
+
+    animation-delay: delay
+    animation-duration: duration
+    animation-name: animation
+    animation-fill-mode: fillmode
+    animation-direction: direction
+    animation-timing-function: timingFn
+    animation-iteration-count: iterations
+page-gradient(main)
+    position: fixed
+    width: 100%
+    height: 150%
+    top: -50%
+    left: 0
+    z-index: 1
+    right: 0
+    bottom: 0
+    background: main-darkgrey-bg
+    background: linear-gradient(-235deg, main 30%, rgba(0,0,0,0) 80%)
+
+// Flexbox display
+flexbox()
+    display: -webkit-box
+    display: -moz-box
+    display: -ms-flexbox
+    display: -webkit-flex
+    display: flex
+
+// Inline flex display
+inline-flex()
+    display: -webkit-inline-box
+    display: -moz-inline-box
+    display: -webkit-inline-flex
+    display: -ms-inline-flexbox
+    display: inline-flex
+
+boxShadow(opts...)
+    -webkit-box-shadow: opts
+    -moz-box-shadow: opts
+    box-shadow: opts
+
+dropShadow(opts...)
+    -webkit-filter: drop-shadow(opts)
+    filter: drop-shadow(opts)
+
+transition(transition...)
+    -moz-transition: transition
+    -o-transition: transition
+    -webkit-transition: transition
+    transition: transition
+transition-property(property...)
+    -moz-transition-property: property
+    -o-transition-property: property
+    -webkit-transition-property: property
+    transition-property: property
+transition-duration(duration...)
+    -moz-transition-property: duration
+    -o-transition-property: duration
+    -webkit-transition-property: duration
+    transition-property: duration
+transition-timing-function(timing...)
+    -moz-transition-timing-function: timing
+    -o-transition-timing-function: timing
+    -webkit-transition-timing-function: timing
+    transition-timing-function: timing
+transition-delay(delay...)
+    -moz-transition-delay: delay
+    -o-transition-delay: delay
+    -webkit-transition-delay: delay
+    transition-delay: delay
