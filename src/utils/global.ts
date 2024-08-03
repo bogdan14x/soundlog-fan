@@ -34,7 +34,7 @@ export const h1Styling =
 
 export const h2Styling =
   'font-grotesk text-2xl md:text-4xl font-bold tracking-tight self-start';
-export const h3Styling = 'font-grotesk text-xl md:text-2xl self-start';
+export const h3Styling = 'font-grotesk text-xl md:text-2xl self-start font-semibold';
 
 export const contentStyle = 'py-10 w-full text-left md:py-12';
 

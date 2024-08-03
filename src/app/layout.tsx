@@ -17,8 +17,8 @@ const roboto = localFont({
 const grotesk = localFont({
   src: [
     {
-      path: '../fonts/HKGrotesk-Light.woff',
-      weight: '300',
+      path: '../fonts/HKGrotesk-Regular.woff',
+      weight: '400',
       style: 'normal',
     },
     {

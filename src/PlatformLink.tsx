@@ -34,23 +34,6 @@ export const getPlatformTitle = (p: AlbumPlatform): string => {
   }
 };
 
-// export const getPlatformURL = (p: AlbumPlatform, idForUrl: string): string => {
-//     switch (p) {
-//         case AlbumPlatform.spotify:
-//             return `https://open.spotify.com/album/${idForUrl}?utm_source=embed_v2&go=1&play=1&nd=1`
-//         case AlbumPlatform.apple:
-//             return `https://geo.music.apple.com/us/album/_/${idForUrl}?mt=1&app=itunes&ls=1`
-//         case AlbumPlatform.deezer:
-//             return `https://www.deezer.com/album/${idForUrl}`
-//         case AlbumPlatform.tidal:
-//             return `https://listen.tidal.com/album/${idForUrl}`
-//         case AlbumPlatform.youtube:
-//             return idForUrl.length > 15
-//                 ? `https://music.youtube.com/playlist?list=${idForUrl}`
-//                 : `https://www.youtube.com/watch?v=${idForUrl}`
-//     }
-// }
-
 export const PlatformLink = ({
   platform,
   fullWidth = false,
@@ -73,7 +56,7 @@ export const PlatformLink = ({
 
   return (
     <a
-      href=""
+      href={url}
       title={`Link to song on ${platformTitle}`}
       rel="noopener noreferrer"
       onClick={onClick ?? handlePlatformClick}
@@ -83,7 +66,7 @@ export const PlatformLink = ({
         className={cls(
           'grid place-items-center py-3',
           ...trackingClasses,
-          'bg-gradient-to-b from-black to-offBlack',
+          "bg-black",
           tileBorder,
           'relative',
         )}

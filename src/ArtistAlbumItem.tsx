@@ -61,7 +61,7 @@ export const ArtistAlbumItem = ({
           <div className="flex flex-col gap-2 py-1">
             <h3
               className={cls(
-                'grow justify-start font-grotesk font-bold',
+                'grow justify-start font-grotesk font-semibold',
                 size === 'small' ? 'text-base' : 'text-xl',
               )}
             >

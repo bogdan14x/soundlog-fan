@@ -40,7 +40,7 @@ export const AlbumModal = () => {
   return (
     <div
       className={cls(
-        'z-50 pointer-events-none select-none transition-all duration-200ms ease-in-out',
+        'z-50 pointer-events-none select-none transition-all duration-500ms ease-in-out',
         'fixed top-0 right-0 bottom-0 left-0',
       )}
       style={{
@@ -48,18 +48,19 @@ export const AlbumModal = () => {
       }}
     >
       <div
-        className="z-20 bg-black/95 opacity-0 pointer-events-none min-h-full min-w-full overflow-y-scroll transition-all duration-500ms ease-in-out"
+        className="z-20 bg-black/95 opacity-0 pointer-events-none min-h-full min-w-full overflow-y-scroll transition-all ease-in-out"
         style={
           modalState
-            ? { opacity: 1, transform: 'translate(0,0)', pointerEvents: 'all' }
+            ? { opacity: 1, transform: 'translate(0,0)', pointerEvents: 'all', transitionDuration: '0.5s' }
             : {
                 opacity: 0,
                 transform: 'translate(0, 6em)',
                 pointerEvents: 'none',
+				transitionDuration: '0.5s'
               }
         }
       >
-        <div className="bg-gradient-to-b from-transparent from-0% to-black w-full h-screen absolute top-0 z-20 pointer-events-none"></div>
+        <div className="bg-gradient-to-b from-black/30 from-0% to-black w-full h-screen absolute top-0 z-20 pointer-events-none"></div>
         <div className="z-10 h-[6rem] w-full text-right right-0 pt-3 pr-4 absolute bg-gradient-to-b from-black to-transparent">
           <button
             className="bg-transparent border-0 py-4 px-2 rounded-lg m-0 hover:bg-white/10"
