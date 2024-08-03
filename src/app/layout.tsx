@@ -3,6 +3,7 @@ import './globals.css';
 import cls from '@/utils/cls';
 import localFont from 'next/font/local';
 import { SpeedInsights } from '@vercel/speed-insights/next';
+import { SoundlogBranding } from '@/icons/soundlogBranding';
 
 const roboto = localFont({
   src: [
@@ -99,7 +100,17 @@ export default function RootLayout({
         media="(prefers-color-scheme: dark)"
       />
       <script async defer src="/p/mount.js"></script>
+
       <body className={cls('dark', roboto.variable, grotesk.variable)}>
+        <header className="footer_branding flex items-center w-full justify-center pt-4">
+          <p>Build your own page.</p>
+          <a href="https://soundlog.app/" target="_blank">
+            {SoundlogBranding({
+              width: 120,
+              opacity: 1,
+            })}
+          </a>
+        </header>
         {children}
         <SpeedInsights />
       </body>
