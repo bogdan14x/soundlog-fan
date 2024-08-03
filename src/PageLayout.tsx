@@ -33,10 +33,10 @@ export default function PageLayout({
                 : artist.coverImage
             }
             alt="Artist hero image."
-            width="2660"
-            height="1140"
+            width={900}
+            height={386}
             priority
-            objectFit='cover'
+            style={{ objectFit: 'cover' }}
             decoding='async'
           />
           <div className="dark_overlay" />
