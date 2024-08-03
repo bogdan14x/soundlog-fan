@@ -22,7 +22,7 @@ const nextConfig = {
     },
   },
   async headers() {
-    const folderNames = ['assets', 'img', 'p', '_vercel'];
+    const folderNames = ['assets', 'img', 'p', '_vercel', '_next'];
     return folderNames.map((folderName) => ({
       source: `/${folderName}/(.*)`,
       headers: [
