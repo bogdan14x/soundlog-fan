@@ -15,19 +15,23 @@ const nextConfig = {
       },
     ],
   },
+  modularizeImports: {
+    'react-icons/?(((\\w*)?/?)*)': {
+      transform: '@react-icons/all-files/{{ matches.[1] }}/{{ member }}',
+      skipDefaultConversion: true,
+    },
+  },
   async headers() {
-    const folderNames = ["assets", "img", "p"];
-    return folderNames.map(folderName => (
-      {
-        source: `/${folderName}/(.*)`, 
-        headers: [
-          {
-            key: 'Cache-Control',
-            value: 'max-age=0, s-maxage=86400',
-          },
-        ],
-      })
-    )
+    const folderNames = ['assets', 'img', 'p', '_vercel'];
+    return folderNames.map((folderName) => ({
+      source: `/${folderName}/(.*)`,
+      headers: [
+        {
+          key: 'Cache-Control',
+          value: 'max-age=0, s-maxage=186400',
+        },
+      ],
+    }));
   },
 };
 
