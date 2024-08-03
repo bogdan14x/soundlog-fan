@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import './globals.css';
 import cls from '@/utils/cls';
 import localFont from 'next/font/local';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 
 const roboto = localFont({
   src: [
@@ -110,6 +111,7 @@ export default function RootLayout({
       <script async defer src="/p/mount.js"></script>
       <body className={cls('dark', roboto.variable, grotesk.variable)}>
         {children}
+        <SpeedInsights />
       </body>
     </html>
   );

@@ -1,6 +1,7 @@
 import { emptyResult, SoundlogResult } from '@/types/SoundlogResult';
 import { headers } from 'next/headers';
 import { notFound } from 'next/navigation';
+import { cache } from 'react';
 
 export const revalidate = 3600 * 6; // revalidate at most every 6h
 
@@ -10,7 +11,8 @@ const getSoundlog = async (): Promise<SoundlogResult> => {
     return emptyResult;
   }
 
-  const soundlogId = forwardedHost.split('.')[0];
+  //   const soundlogId = forwardedHost.split('.')[0];
+  const soundlogId = 'armin';
   let market = 'US';
 
   if (!soundlogId) {
