@@ -11,21 +11,11 @@ const roboto = localFont({
       weight: '400',
       style: 'normal',
     },
-    {
-      path: '../fonts/Roboto-Medium.woff',
-      weight: '500',
-      style: 'normal',
-    },
   ],
   variable: '--font-roboto',
 });
 const grotesk = localFont({
   src: [
-    {
-      path: '../fonts/HKGrotesk-Medium.woff',
-      weight: '500',
-      style: 'normal',
-    },
     {
       path: '../fonts/HKGrotesk-Light.woff',
       weight: '300',
