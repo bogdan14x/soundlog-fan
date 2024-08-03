@@ -210,6 +210,11 @@
     width: 100%;
   }
 }
+
+.hero_image img {
+  object-fit: cover;
+  -o-object-fit: cover;
+}
  
  /* .social_icon:nth-of-type(3n+2) {
    justify-content: center;
