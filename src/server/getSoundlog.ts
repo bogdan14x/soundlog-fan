@@ -1,36 +1,26 @@
 import { emptyResult, SoundlogResult } from '@/types/SoundlogResult';
 import { headers } from 'next/headers';
 import { notFound } from 'next/navigation';
-import { cache } from 'react';
 
-export const revalidate = 3600 * 6; // revalidate at most every 6h
+export const revalidate = 3600; // revalidate at most every hour
 
 const getSoundlog = async (): Promise<SoundlogResult> => {
-  const forwardedHost = headers().get('X-Forwarded-Host');
+  const forwardedHost = headers().get('x-forwarded-host');
   if (!forwardedHost) {
     return emptyResult;
   }
 
-  //   const soundlogId = forwardedHost.split('.')[0];
-  const soundlogId = 'armin';
-  let market = 'US';
-
+  const soundlogId = forwardedHost.split('.')[0];
+  //   const soundlogId = 'armin';
   if (!soundlogId) {
     return notFound();
   }
 
-  const acceptLanguage = headers().get('Accept-Language'); // "es-ES,es;q=0.9"
-
-  const parts = acceptLanguage?.split(',') ?? []; // ['es-ES', 'es;q=0.9']
-
-  if (parts.length > 0) {
-    market = parts[0]?.split('-')[1] ?? 'US';
-  }
-  console.log('fetching for', market);
+  const market = headers().get('x-vercel-ip-country') ?? "US"; // "es-ES,es;q=0.9"
 
   try {
     const response = await fetch(
-      `https://fetcher.soundlog.app/v1/links/getSingles?soundlogId=${soundlogId}&market=${market}`,
+      `https://fetcher.soundlog.app/v1/links/getSingles?soundlogId=${soundlogId}&market=${market.toUpperCase()}`,
       {
         headers: {
           'Content-Type': 'application/json',
