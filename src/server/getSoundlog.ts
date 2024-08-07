@@ -16,9 +16,10 @@ const getSoundlog = async (): Promise<SoundlogResult> => {
     return notFound();
   }
 
-  const market = headers().get('x-vercel-ip-country') ?? "US"; // "es-ES,es;q=0.9"
+  const market = headers().get('x-vercel-ip-country') ?? 'US'; // "es-ES,es;q=0.9"
 
   try {
+    console.time('getSoundlog');
     const response = await fetch(
       `https://fetcher.soundlog.app/v1/links/getSingles?soundlogId=${soundlogId}&market=${market.toUpperCase()}`,
       {
@@ -34,6 +35,8 @@ const getSoundlog = async (): Promise<SoundlogResult> => {
     return data;
   } catch (error) {
     return notFound();
+  } finally {
+    console.timeEnd('getSoundlog');
   }
 };
 

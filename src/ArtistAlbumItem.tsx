@@ -15,7 +15,7 @@ export const ArtistAlbumItem = ({
   size,
   soundlogAlbum,
 }: ArtistAlbumItemProps) => {
-  const { release_date, images, name } = soundlogAlbum;
+  const { release_date, images, name, id } = soundlogAlbum;
   const image_small = images.find((image) => image.height === 64)?.url;
   const image_medium = images.find((image) => image.height === 300)?.url;
   const image_large = images.find((image) => image.height === 640)?.url;
@@ -23,6 +23,7 @@ export const ArtistAlbumItem = ({
   const { setAlbum, setModalState } = useContext(ModalStateContext);
 
   const parsedDate = new Date(release_date ?? '1997-02-20');
+
 
   return (
     <button
@@ -32,6 +33,7 @@ export const ArtistAlbumItem = ({
         tileBorder,
         tileGradient,
         buttonActive,
+        `plausible-event-name=view_album:${id}`,
       )}
       onClick={() => {
         setAlbum(soundlogAlbum);
