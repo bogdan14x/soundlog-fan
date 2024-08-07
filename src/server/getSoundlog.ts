@@ -1,4 +1,5 @@
 import { emptyResult, SoundlogResult } from '@/types/SoundlogResult';
+import dayjs from 'dayjs';
 import { headers } from 'next/headers';
 import { notFound } from 'next/navigation';
 
@@ -18,8 +19,11 @@ const getSoundlog = async (): Promise<SoundlogResult> => {
 
   const market = headers().get('x-vercel-ip-country') ?? 'US'; // "es-ES,es;q=0.9"
 
+  const timerLabel = 'getSoundlog'.concat(
+    dayjs().format('YYYY-MM-DD HH:mm:ss'),
+  );
   try {
-    console.time('getSoundlog');
+    console.time(timerLabel);
     const response = await fetch(
       `https://fetcher.soundlog.app/v1/links/getSingles?soundlogId=${soundlogId}&market=${market.toUpperCase()}`,
       {
@@ -36,7 +40,7 @@ const getSoundlog = async (): Promise<SoundlogResult> => {
   } catch (error) {
     return notFound();
   } finally {
-    console.timeEnd('getSoundlog');
+    console.timeEnd(timerLabel);
   }
 };
 
