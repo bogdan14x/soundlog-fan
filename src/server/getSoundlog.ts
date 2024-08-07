@@ -1,7 +1,7 @@
 import { emptyResult, SoundlogResult } from '@/types/SoundlogResult';
-import dayjs from 'dayjs';
 import { headers } from 'next/headers';
 import { notFound } from 'next/navigation';
+import { performance } from 'perf_hooks';
 
 export const revalidate = 3600; // revalidate at most every hour
 
@@ -19,11 +19,8 @@ const getSoundlog = async (): Promise<SoundlogResult> => {
 
   const market = headers().get('x-vercel-ip-country') ?? 'US'; // "es-ES,es;q=0.9"
 
-  const timerLabel = 'getSoundlog'.concat(
-    dayjs().format('YYYY-MM-DD_HH:mm:ss'),
-  );
+  const start = performance.now();
   try {
-    console.time(timerLabel);
     const response = await fetch(
       `https://fetcher.soundlog.app/v1/links/getSingles?soundlogId=${soundlogId}&market=${market.toUpperCase()}`,
       {
@@ -40,7 +37,9 @@ const getSoundlog = async (): Promise<SoundlogResult> => {
   } catch (error) {
     return notFound();
   } finally {
-    console.timeEnd(timerLabel);
+    const end = performance.now(); // End the timer
+    const duration = end - start; // Calculate duration
+    console.log(`Soundlog Fetch Duration: ${duration} milliseconds`);
   }
 };
 
