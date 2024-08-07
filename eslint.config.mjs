@@ -1,35 +1,16 @@
-import path from "node:path";
-import { fileURLToPath } from "node:url";
-import js from "@eslint/js";
-import { FlatCompat } from "@eslint/eslintrc";
-import { fixupPluginRules } from "@eslint/compat";
+import { fixupPluginRules } from '@eslint/compat';
+import reactPlugin from 'eslint-plugin-react';
+import reactHooksPlugin from 'eslint-plugin-react-hooks';
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-const compat = new FlatCompat({
-  baseDirectory: __dirname,
-  recommendedConfig: js.configs.recommended,
-  allConfig: js.configs.all,
-});
-
-const pluginsToPatch = [
-  "@next/next",
-  // Other plugins to patch, example :
-  // "react-hooks",
+/**  @type {import('eslint').Linter.FlatConfig}*/
+export default [
+  {
+    plugins: {
+      react: reactPlugin,
+      'react-hooks': fixupPluginRules(reactHooksPlugin),
+    },
+    rules: {
+      ...reactHooksPlugin.configs.recommended.rules,
+    },
+  },
 ];
-
-const compatConfig = [...compat.extends("next/core-web-vitals")];
-
-const patchedConfig = compatConfig.map((entry) => {
-  const plugins = entry.plugins;
-  for (const key in plugins) {
-    if (plugins.hasOwnProperty(key) && pluginsToPatch.includes(key)) {
-      plugins[key] = fixupPluginRules(plugins[key]);
-    }
-  }
-  return entry;
-});
-
-const config = [...patchedConfig, { ignores: [".next/*"] }];
-
-export default config;

@@ -4,9 +4,40 @@ import getSoundlog from '@/server/getSoundlog';
 import cls from '@/utils/cls';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import { Metadata } from 'next';
-import { grotesk, roboto } from './layout';
 import { SoundlogResult } from '@/types/SoundlogResult';
 import Head from 'next/head';
+import localFont from 'next/font/local';
+
+const roboto = localFont({
+  src: [
+    {
+      path: '../fonts/Roboto-Regular.woff',
+      weight: '400',
+      style: 'normal',
+    },
+  ],
+  variable: '--font-roboto',
+});
+const grotesk = localFont({
+  src: [
+    {
+      path: '../fonts/HKGrotesk-Regular.woff',
+      weight: '400',
+      style: 'normal',
+    },
+    {
+      path: '../fonts/HKGrotesk-Bold.woff',
+      weight: '700',
+      style: 'normal',
+    },
+    {
+      path: '../fonts/HKGrotesk-SemiBold.woff',
+      weight: '600',
+      style: 'normal',
+    },
+  ],
+  variable: '--font-grotesk',
+});
 
 function getMeta(data: SoundlogResult): Metadata {
   const { soundlog, artist } = data;
