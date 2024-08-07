@@ -20,7 +20,7 @@ const getSoundlog = async (): Promise<SoundlogResult> => {
   const market = headers().get('x-vercel-ip-country') ?? 'US'; // "es-ES,es;q=0.9"
 
   const timerLabel = 'getSoundlog'.concat(
-    dayjs().format('YYYY-MM-DD HH:mm:ss'),
+    dayjs().format('YYYY-MM-DD_HH:mm:ss'),
   );
   try {
     console.time(timerLabel);
