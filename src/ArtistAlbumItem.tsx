@@ -35,7 +35,7 @@ export const ArtistAlbumItem = ({
         buttonActive,
       )}
       onClick={() => {
-        plausible('view_album', { props: { id } });
+        plausible(`view_album:${id}`);
         setAlbum(soundlogAlbum);
         setModalState(true);
       }}
