@@ -17,14 +17,13 @@ const getSoundlog = async (): Promise<SoundlogResult> => {
     return notFound();
   }
 
-  const market = headers().get('x-vercel-ip-country') ?? 'US'; // "es-ES,es;q=0.9"
+  const market = headers().get('x-vercel-ip-country') ?? 'GB'; // "es-ES,es;q=0.9"
 
   const start = performance.now();
-  console.log(headers().get('x-vercel-signature'));
 
   try {
     const response = await fetch(
-      `https://fetcher.soundlog.app/v1/links/getSingles?soundlogId=${soundlogId}&market=${market.toUpperCase()}`,
+      `https://fetcher.soundlog.app/v1/links/getLatest?soundlogId=${soundlogId}&market=${market.toUpperCase()}`,
       {
         headers: {
           'Content-Type': 'application/json',

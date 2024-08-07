@@ -1,13 +1,16 @@
 export interface SoundlogResult {
   albums: { [key: string]: Album };
+  next_ids: string[];
   soundlog: SoundlogDocument;
   artist: ArtistData;
 }
 
 export const emptyResult: SoundlogResult = {
   albums: {},
+  next_ids: [],
   soundlog: {
     user_id: '',
+    id: '',
     socials: {
       instagram: '',
       tiktok: '',
@@ -54,6 +57,7 @@ export interface SoundlogDocument {
   user_id: string;
   socials: SocialLinks;
   artist_id: string;
+  id: string;
   artist_name: string;
   artist_avatar: string;
   cover_image: string;
