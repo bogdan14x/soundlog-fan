@@ -33,9 +33,9 @@ export const ArtistAlbumItem = ({
         tileBorder,
         tileGradient,
         buttonActive,
-        `plausible-event-name=view_album:${id}`,
       )}
       onClick={() => {
+        plausible('view_album', { props: { id } });
         setAlbum(soundlogAlbum);
         setModalState(true);
       }}

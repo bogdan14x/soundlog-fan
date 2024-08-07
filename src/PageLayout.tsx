@@ -23,14 +23,13 @@ export default function PageLayout({
       const params = new URLSearchParams();
       params.append('album_ids', next_ids.join(','));
 
-      const response = await fetch(`/api/getSingles?${params.toString()}`) 
+      const response = await fetch(`/api/getSingles?${params.toString()}`);
 
       if (!response.ok) {
         return setHasError(true);
       }
       const { albums } = await response.json();
       setNextAlbums(albums);
-
     } catch (error) {
       setHasError(true);
     } finally {
@@ -95,28 +94,34 @@ export default function PageLayout({
             <p className="font-grotesk mb-2">
               More from {soundlog.artist_name}
             </p>
-            {isLoading ? (
+          </li>
+          {isLoading ? (
+            <li key="loading">
               <div className="skeleton flex flex-col gap-3 py-2 animate-pulse">
                 <div className="w-full h-[7em] rounded-xl bg-white opacity-10"></div>
                 <div className="w-full h-[7em] rounded-xl bg-white opacity-10"></div>
                 <div className="w-full h-[7em] rounded-xl bg-white opacity-10"></div>
               </div>
-            ) : (
-              <>
-                {
-                  !hasError && Object.values(nextAlbums).length > 0 ? (
-                    Object.values(nextAlbums).map((album) => (
-                      <ArtistAlbumItem
-                        key={album.id}
-                        soundlogAlbum={album}
-                        size="small"
-                      />
-                    ))
-                  ) : <p>Error getting albums.</p>
-                }
-              </>
-            )}
-          </li>
+            </li>
+          ) : (
+            <>
+              {!hasError && Object.values(nextAlbums).length > 0 ? (
+                Object.values(nextAlbums).map((album) => (
+                  <li key={album.id}>
+                    <ArtistAlbumItem
+                      key={album.id}
+                      soundlogAlbum={album}
+                      size="small"
+                    />
+                  </li>
+                ))
+              ) : (
+                <li key={'error'}>
+                  <p>Error getting albums.</p>
+                </li>
+              )}
+            </>
+          )}
         </ul>
       </div>
     </>
