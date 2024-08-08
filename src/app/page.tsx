@@ -65,6 +65,8 @@ function getMeta(data: SoundlogResult): Metadata {
   };
 }
 
+export const runtime = 'edge'
+
 export default async function Home() {
   const data = await getSoundlog();
   const { description, title, openGraph, twitter } = getMeta(data);
