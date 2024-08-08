@@ -1,7 +1,6 @@
 import { emptyResult, SoundlogResult } from '@/types/SoundlogResult';
 import { headers } from 'next/headers';
 import { notFound } from 'next/navigation';
-import { performance } from 'perf_hooks';
 
 export const revalidate = 3600; // revalidate at most every hour
 
@@ -19,7 +18,7 @@ const getSoundlog = async (): Promise<SoundlogResult> => {
 
   const market = headers().get('x-vercel-ip-country') ?? 'GB'; // "es-ES,es;q=0.9"
 
-  const start = performance.now();
+  // const start = performance.now();
 
   try {
     const response = await fetch(
@@ -40,9 +39,9 @@ const getSoundlog = async (): Promise<SoundlogResult> => {
   } catch (error) {
     return notFound();
   } finally {
-    const end = performance.now(); // End the timer
-    const duration = end - start; // Calculate duration
-    console.log(`Soundlog Fetch Duration: ${duration} milliseconds`);
+    // const end = performance.now(); // End the timer
+    // const duration = end - start; // Calculate duration
+    // console.log(`Soundlog Fetch Duration: ${duration} milliseconds`);
   }
 };
 
